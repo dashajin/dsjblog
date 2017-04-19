@@ -18,3 +18,18 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
+    Route::get('/', 'Auth\LoginController@showLoginForm');
+    Route::post('login', 'Auth\LoginController@login');
+    Route::post('logout', 'Auth\LoginController@logout');
+    Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+    Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
+    Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+    Route::get('register', 'Auth\RegisterController@showRegistrationForm');
+    Route::post('register', 'Auth\RegisterController@register');
+    Route::get('home', 'HomeController@index');
+    Route::get('article', 'ArticleController@index');
+    Route::get('article/create', 'ArticleController@create');
+    Route::post('article/store', 'ArticleController@store');
+});
