@@ -10,7 +10,7 @@
                         <h2>Articles <small>» Listing</small></h2>
                     </div>
                     <div class="col-md-3">
-                        <a class="btn btn-success pull-right" href="{{ url('admin/article/create') }}"><i class="fa fa-plus"></i> 添加文章</a>
+                        <a class="btn btn-success pull-right" href="{{ url('admin/article/create') }}"><i class="fa fa-plus-circle"></i> New Article</a>
                     </div>
                 </div>
                 @foreach($articles as $article)
@@ -27,6 +27,7 @@
                     </div>
                 </div>
                 @endforeach
+                <div class="text-center">{{ $articles->links() }}</div>
             </div>
         </div>
     </div>

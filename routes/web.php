@@ -29,7 +29,14 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('register', 'Auth\RegisterController@showRegistrationForm');
     Route::post('register', 'Auth\RegisterController@register');
     Route::get('home', 'HomeController@index');
+
+
     Route::get('article', 'ArticleController@index');
     Route::get('article/create', 'ArticleController@create');
     Route::post('article/store', 'ArticleController@store');
+
+    Route::get('category', 'CategoryController@index');
+    Route::post('category/store', 'CategoryController@store');
+    Route::get('category/edit/{id}', 'CategoryController@edit');
+    Route::get('category/delete/{id}', 'CategoryController@destroy');
 });

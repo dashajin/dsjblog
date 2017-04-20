@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Article;
+use Illuminate\Support\Facades\DB;
 
 class ArticleController extends Controller
 {
@@ -15,7 +16,8 @@ class ArticleController extends Controller
 
     public function index()
     {
-        return view('admin.article.articles')->withArticles(Article::all());
+        $articles = DB::table('articles')->paginate(5);
+        return view('admin.article.articles')->withArticles($articles);
     }
 
     public function create()
