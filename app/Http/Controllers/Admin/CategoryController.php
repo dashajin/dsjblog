@@ -20,12 +20,12 @@ class CategoryController extends Controller
         return view('admin.category.categories')->withCategories($categories);
     }
 
-    public function edit($id, Request $request)
+    public function edit($i, Request $request)
     {
         $this->validate($request,[
             'name' => 'required|unique:categories',
         ]);
-        $category = Category::find($id);
+        $category = Category::find($i);
         $category->name = $request['name'];
         if ($category->update()) {
             return redirect('/admin/category')->withSuccess('修改成功');

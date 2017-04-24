@@ -22,7 +22,7 @@
                     </div>
                  @endif
                 <h2>添加文章</h2>
-                <form role="form" method="post" action="{{ url('/admin/article/store') }}">
+                <form role="form" method="post" action="{{ url('/admin/article') }}">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label for="title">Title:</label>
@@ -33,11 +33,9 @@
                         <textarea class="form-control" rows="10" placeholder="文章内容" id="content" name="content"></textarea>
                         <label for="name">category:</label>
                         <select class="form-control" name="category">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                            @foreach($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group">

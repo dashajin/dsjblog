@@ -31,9 +31,11 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('home', 'HomeController@index');
 
 
-    Route::get('article', 'ArticleController@index');
-    Route::get('article/create', 'ArticleController@create');
-    Route::post('article/store', 'ArticleController@store');
+//    Route::get('article', 'ArticleController@index');
+//    Route::get('article/create', 'ArticleController@create');
+//    Route::post('article', 'ArticleController@store');
+//    Route::get('article/{id}/edit', 'ArticleController@edit');
+    Route::resource('article', 'ArticleController');
 
     Route::get('category', 'CategoryController@index');
     Route::post('category/store', 'CategoryController@store');
