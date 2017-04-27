@@ -3,15 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Article;
 
-class HomeController extends Controller
+class ArticleController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('auth');
@@ -25,16 +19,8 @@ class HomeController extends Controller
     public function index()
     {
         $article = new Article;
-        $articles = $article->getArticles(5);
+        $articles = $article->paginate(5);
         viewInit();
         return view('home', ['articles' => $articles]);
-    }
-
-    public function show($id)
-    {
-        $article = Article::find($id);
-        //dd($article);
-        viewInit();
-        return view('show')->withArticle($article);
     }
 }

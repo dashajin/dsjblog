@@ -29,7 +29,7 @@
                         <a class="btn btn-success pull-right" href="{{ url('admin/article/create') }}"><i class="fa fa-plus-circle"></i> New Article</a>
                     </div>
                 </div>
-                @foreach($articles->items() as $article)
+                @foreach($articles as $article)
                 <div class="well well-lg">
                     <h1>{{ $article->title }}</h1>
                     <h4>{{ $article->description }}</h4>

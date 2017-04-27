@@ -59,6 +59,7 @@
                             <table id="tags-table" class="table table-striped table-bordered">
                                 <thead>
                                 <tr>
+                                    <th>ID</th>
                                     <th>Category name</th>
                                     <th>Action</th>
                                 </tr>
@@ -66,6 +67,7 @@
                                 <tbody>
                                 @foreach ($categories as $category)
                                     <tr>
+                                        <td>{{ $category->id }}</td>
                                         <td>{{ $category->name }}</td>
                                         <td>
                                             <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#{{ $category->id }}"><i class="fa fa-edit"></i>Edit</button>

@@ -17,7 +17,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/article', 'HomeController@index');
+Route::get('/article/{id}', 'HomeController@show');
+
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('/', 'Auth\LoginController@showLoginForm');

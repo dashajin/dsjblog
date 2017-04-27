@@ -19,8 +19,7 @@ class ArticleController extends Controller
     {
         $article = new Article;
         $articles = $article->paginate(2);
-        $arts = Article::all();
-        return view('admin.article.articles', compact('articles'))->withCategories(Category::all())->withArts($arts);
+        return view('admin.article.articles', compact('articles'))->withCategories(Category::all());
     }
 
     public function create()

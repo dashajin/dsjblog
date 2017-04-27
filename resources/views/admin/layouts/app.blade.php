@@ -49,6 +49,9 @@
                 </ul>
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
+                    {{--@foreach($catrgories as $catrgory)--}}
+                        {{--<li><a href="{{ url('/admin') }}">Login</a></li>--}}
+                    {{--@endforeach--}}
                     <!-- Authentication Links -->
                     @if (Auth::guard('admins')->user())
                         <li class="dropdown">
