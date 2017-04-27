@@ -79,15 +79,15 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    {{ config('app.name', 'lavarel') }}
                 </div>
 
                 <div class="links">
                     <a href="{{ url('/article') }}">blog</a>
                     <a href="#">photo</a>
-                    <a href="#">weibo</a>
-                    <a href="#">aboutme</a>
+                    <a href="#">weixin</a>
                     <a href="https://github.com/dashajin">GitHub</a>
+                    <a href="#">aboutme</a>
                 </div>
             </div>
         </div>

@@ -22,7 +22,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-default navbar-static-top" style="background-color: #8eb4cb">
             <div class="container">
                 <div class="navbar-header">
 
@@ -81,9 +81,15 @@
                 </div>
             </div>
         </nav>
-
         @yield('content')
     </div>
+    <footer class="footer">
+        <div class="panel panel-footer" style="background-color: #8eb4cb">
+            <div class="panel-body text-center">
+                <p class="text-info">Copyright © dashajin</p>
+            </div>
+        </div>
+    </footer>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
