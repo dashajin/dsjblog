@@ -19,7 +19,7 @@ class ArticleController extends Controller
     public function index()
     {
         $article = new Article;
-        $articles = $article->paginate(5);
+        $articles = $article->getAticles(5);
         viewInit();
         return view('home', ['articles' => $articles]);
     }

@@ -4,9 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Parsedown;
 
 class Article extends Model
 {
+    public function __construct()
+    {
+        $this->markdownParser = new Parsedown();
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class,'cat_id','id');

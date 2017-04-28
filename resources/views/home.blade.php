@@ -11,7 +11,7 @@
                             @foreach($articles as $k => $article)
                                 <div class="post-preview">
                                     <a
-                                            href="{{ url('article',[$article->seo_title]) }}@if(request('cat_id'))?cat_id={{request('cat_id')}}@endif @if(request('key_id'))?key_id={{request('key_id')}}@endif"
+                                            href="{{ url('article',[$article->id]) }}"
                                     >
                                         <h1 class="post-title">{{ $article->title }}</h1>
                                         <h3 class="post-subtitle">{{ $article->description }}</h3>
