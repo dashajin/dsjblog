@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Article;
+use Illuminate\Support\Facades\Auth;
 use Parsedown;
 
 class HomeController extends Controller
@@ -15,7 +16,8 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
+        viewInit();
     }
 
     /**
@@ -25,9 +27,10 @@ class HomeController extends Controller
      */
     public function index()
     {
+        //dd(Auth::user());
         $article = new Article;
-        $articles = $article->getArticles(5);
-        viewInit();
+        $articles = $article->getArticles(6);
+        //viewInit();
         return view('home', ['articles' => $articles]);
     }
 
@@ -37,7 +40,7 @@ class HomeController extends Controller
         $article = Article::find($id);
         $article->content = $markdownParser->text($article->content);
         //dd($article);
-        viewInit();
+        //viewInit();
         return view('show')->withArticle($article);
     }
 }

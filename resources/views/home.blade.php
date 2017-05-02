@@ -16,12 +16,13 @@
                                         <h1 class="post-title">{{ $article->title }}</h1>
                                         <h3 class="post-subtitle">{{ $article->description }}</h3>
                                     </a>
-                                    分类:<a>{{ $article->category->name }}</a>
+                                    分类:<a href="{{ url("/article?cat_id=".$article->category->id) }}"> {{ $article->category->name }} </a>
+                                    <i class="fa fa-comments-o"></i> {{ $article->comments->count() }}
                                     <p class="post-meta">
-                                        dashajin on {{ $article->created_at->toDateString() }}
-                                        in
-                                        @if($article->keys)
-                                            @foreach( $article->keys as $key)
+
+                                        <a href="#">dashajin</a> created at {{ $article->created_at->toDateTimeString() }}
+                                        @if($article->tags)
+                                            @foreach( $article->tags as $key)
                                                 <a href="/article?key_id={{ $key->id }}">
                                                     <span class="label {{ request('key_id') == $key->id?'label-success':'label-info' }}"  style="font-size: 66%"> <i class="glyphicon glyphicon-tag"></i>&nbsp; &nbsp;{{ $key->name }}</span>
                                                 </a>

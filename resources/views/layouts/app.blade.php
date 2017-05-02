@@ -8,11 +8,17 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'dashajin') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+    <style>
+    .head
+    {
+        position: fixed;
+    }
+    </style>
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
@@ -43,7 +49,7 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        &nbsp;<li><a href="{{ url('/article') }}">首页</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -54,20 +60,19 @@
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
-                            @foreach(\App\Category::all() as $category)
-                                <li><a href="{{ url("/article?cat_id=$category->id") }}">{{ $category->name }}</a></li>
-                            @endforeach
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
-
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
+                                        <a href="{{ url('/user/setting') }}">
+                                            <i class="fa fa-cog"></i> Setting
+                                        </a>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
+                                            <i class="fa fa-sign-out"></i> Logout
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -81,16 +86,15 @@
                 </div>
             </div>
         </nav>
-        @yield('content')
     </div>
-    <footer class="footer">
-        <div class="panel panel-footer" style="background-color: #8eb4cb">
+    @yield('content')
+    <div class="footer">
+        <div class="panel panel-default" style="background-color: #8eb4cb">
             <div class="panel-body text-center">
                 <p class="text-info">Copyright © dashajin</p>
             </div>
         </div>
-    </footer>
-
+    </div>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
