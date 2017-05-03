@@ -3,18 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Http\Requests\CommentRequest;
 use Illuminate\Http\Request;
 use Parsedown;
 
 class CommentController extends Controller
 {
-    public function store(Request $request)
+    public function store(CommentRequest $request)
     {
-        $this->validate($request, [
-            'content' => 'required',
-            'user_id' => 'required',
-            'article_id' => 'required',
-        ]);
         $comment = new Comment;
         $markdownParser = new Parsedown();
         $comment->user_id = $request['user_id'];

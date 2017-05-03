@@ -18,6 +18,9 @@
     {
         position: fixed;
     }
+    a:hover{
+        text-decoration: none;
+    }
     </style>
     <!-- Scripts -->
     <script>

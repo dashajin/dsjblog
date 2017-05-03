@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Category;
+use App\Http\Requests\ArticleRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Article;
@@ -27,18 +28,15 @@ class ArticleController extends Controller
         return view('admin.article.create')->withCategories(Category::all());
     }
 
-    public function store(Request $request)
+    public function store(ArticleRequest $request)
     {
-        $this->validate($request,[
-            'title' => 'required|max:255',
-            'description' => 'required',
-            'content' => 'required',
-        ]);
         $article = new Article;
         $article->title = $request['title'];
         $article->description = $request['description'];
         $article->content = $request['content'];
-        $article->cat_id = $request['category'];
+        $article->cat_id = $request['cat_id'];
+//        $data = array_slice($request->all(), 1);
+        //dd($data);
         if ($article->save()) {
             return redirect('admin/article/create')->withSuccess('添加成功');
         } else {
@@ -52,18 +50,13 @@ class ArticleController extends Controller
         return view('admin.article.operate', compact('article'))->withCategories(Category::all());
     }
 
-    public function update(Request $request, $id)
+    public function update(ArticleRequest $request, $id)
     {
-        $this->validate($request,[
-            'title' => 'required|max:255',
-            'description' => 'required',
-            'content' => 'required',
-        ]);
         $article = Article::find($id);
         $article->title = $request['title'];
         $article->description = $request['description'];
         $article->content = $request['content'];
-        $article->cat_id = $request['category'];
+        $article->cat_id = $request['cat_id'];
         $res = $article->update();
         if ($res)
         {

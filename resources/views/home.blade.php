@@ -13,9 +13,10 @@
                                     <a
                                             href="{{ url('article',[$article->id]) }}"
                                     >
-                                        <h1 class="post-title">{{ $article->title }}</h1>
-                                        <h3 class="post-subtitle">{{ $article->description }}</h3>
+                                        <h2 class="post-title">{{ $article->title }}</h2>
                                     </a>
+                                        <h5 class="post-subtitle" style="color: darkgray; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: inherit">{{ $article->content }}</h5>
+
                                     分类:<a href="{{ url("/article?cat_id=".$article->category->id) }}"> {{ $article->category->name }} </a>
                                     <i class="fa fa-comments-o"></i> {{ $article->comments->count() }}
                                     <p class="post-meta">
