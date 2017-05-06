@@ -1,31 +1,33 @@
 @extends('admin.layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            @include('admin.layouts.leftnav')
-            <div class="col-md-9">
-                @if (session('success'))
-                    <div class="alert alert-info">
-                        <ul>
-                            <li>{{ session('success') }}</li>
-                        </ul>
-                    </div>
-                @endif
-                @if (count($errors) > 0)
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-                    <div class="row page-title-row">
-                        <div class="col-md-12">
-                            <h2>Articles <small>» edit</small></h2>
-                        </div>
-                    </div>
+    @include('admin.layouts.leftnav')
+    <div id="wrapper">
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="page-head-line">Articles <small>>>> Edit</small></h1>
+                    <h1 class="page-subhead-line text-center" style="font-size: 40px;">{{ config('app.admin.motto') }}</h1>
+                </div>
+            </div>
+            @if (session('success'))
+                <div class="alert alert-info">
+                    <ul>
+                        <li>{{ session('success') }}</li>
+                    </ul>
+                </div>
+            @endif
+            @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            <div class="row">
+                <div class="col-md-12">
                     <form role="form" method="post" action="{{ url('/admin/article', ['id' => $article->id]) }}">
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
@@ -51,7 +53,8 @@
                             </div>
                         </div>
                     </form>
-            </div>
+                </div>
+        </div>
         </div>
     </div>
 @endsection

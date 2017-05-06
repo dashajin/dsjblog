@@ -6,7 +6,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <h1 class="page-head-line">Articles <small>>>> Listing</small></h1>
-                    <h1 class="page-subhead-line">This is dummy text , you can replace it with your original text. </h1>
+                    <a class="btn btn-success pull-right" href="{{ url('admin/article/create') }}"><i class="fa fa-plus-circle"></i> New Article</a>
+                    <h1 class="page-subhead-line text-center" style="font-size: 40px;">{{ config('app.admin.motto') }}</h1>
                 </div>
             </div>
             @if (session('success'))
@@ -32,8 +33,8 @@
                             <thead>
                             <tr>
                                 <th class="col-md-1">ID</th>
-                                <th>title</th>
-                                <th>description</th>
+                                <th class="col-md-3">title</th>
+                                <th class="col-md-4">description</th>
                                 <th class="col-md-2">created_at</th>
                                 <th class="col-md-2">operation</th>
                             </tr>

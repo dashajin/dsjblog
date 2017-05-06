@@ -1,27 +1,33 @@
 @extends('admin.layouts.app')
 
 @section('content')
-    <div class="container">
+    @include('admin.layouts.leftnav')
+    <div id="wrapper">
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="page-head-line">Articles <small>>>> create</small></h1>
+                    <h1 class="page-subhead-line text-center" style="font-size: 40px;">{{ config('app.admin.motto') }}</h1>
+                </div>
+            </div>
+            @if (session('success'))
+                <div class="alert alert-info">
+                    <ul>
+                        <li>{{ session('success') }}</li>
+                    </ul>
+                </div>
+            @endif
+            @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
         <div class="row">
-            @include('admin.layouts.leftnav')
-            <div class="col-md-9">
-                @if (session('success'))
-                    <div class="alert alert-info">
-                        <ul>
-                            <li>{{ session('success') }}</li>
-                        </ul>
-                    </div>
-                @endif
-                @if (count($errors) > 0)
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                 @endif
-                <h2>添加文章</h2>
+            <div class="col-md-12">
                 <form role="form" method="post" action="{{ url('/admin/article') }}">
                     {{ csrf_field() }}
                     <div class="form-group">
@@ -46,6 +52,7 @@
                     </div>
                 </form>
             </div>
+        </div>
         </div>
     </div>
 @endsection

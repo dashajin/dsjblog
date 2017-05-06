@@ -6,32 +6,33 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="page-head-line">Categories <small>>>> Listing</small></h1>
-                    <button class="btn btn-success pull-right" data-toggle="modal" data-target="#create"><i class="fa fa-plus-circle"></i> New Category</button>
-                    <!-- 模态框（Modal） -->
-                    <div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <form role="form" method="post" action="{{ url('/admin/category/store') }}">
-                                    {{ csrf_field() }}
-                                    <div class="form-group">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                            <h4 class="modal-title" id="myModalLabel">添加Category</h4>
+                    <h1 class="page-head-line">Categories <small>>>> Listing</small>
+                        <button class="btn btn-success pull-right" data-toggle="modal" data-target="#create"><i class="fa fa-plus-circle"></i> New Category</button>
+                        <!-- 模态框（Modal） -->
+                        <div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <form role="form" method="post" action="{{ url('/admin/category/store') }}">
+                                        {{ csrf_field() }}
+                                        <div class="form-group">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                <h4 class="modal-title" id="myModalLabel">添加Category</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <input type="text" class="form-control" placeholder="请输入分类名" name="name">
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-info btn-xs" data-dismiss="modal">关闭</button>
+                                                <button type="submit" class="btn btn-danger btn-xs">确定</button>
+                                            </div>
                                         </div>
-                                        <div class="modal-body">
-                                            <input type="text" class="form-control" placeholder="请输入分类名" name="name">
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-info btn-xs" data-dismiss="modal">关闭</button>
-                                            <button type="submit" class="btn btn-danger btn-xs">确定</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div><!-- /.modal-content -->
-                        </div><!-- /.modal -->
-                    </div>
-                    <h1 class="page-subhead-line">This is dummy text , you can replace it with your original text. </h1>
+                                    </form>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal -->
+                        </div>
+                    </h1>
+                    <h1 class="page-subhead-line text-center" style="font-size: 40px;">{{ config('app.admin.motto') }}</h1>
                 </div>
             </div>
             @if (count($errors) > 0)
