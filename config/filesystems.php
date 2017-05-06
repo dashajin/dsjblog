@@ -63,6 +63,19 @@ return [
             'bucket' => env('AWS_BUCKET'),
         ],
 
+        'qiniu' => [
+            'driver'  => 'qiniu',
+            'domains' => [
+                'default'   => 'oeww1hqu9.bkt.clouddn.com', //你的七牛域名
+                'https'     => '',         //你的HTTPS域名
+                'custom'    => '',                //你的自定义域名
+            ],
+            'access_key'=> 'cmL6W122gBj7_vLrAn_3Z2kU2ACP8yy-BYpDt6dq',  //AccessKey
+            'secret_key'=> 'cMHTEcwJ2pswdz71z2CqNJexNJR1JxU9LWh63WkT',  //SecretKey
+            'bucket'    => 'dashajin',  //Bucket名字
+            'notify_url'=> '',  //持久化处理回调地址
+        ],
+
     ],
 
 ];

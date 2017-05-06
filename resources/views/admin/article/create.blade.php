@@ -57,7 +57,7 @@
         var simplemde = new SimpleMDE({
             autofocus: false,
             autosave: {
-                enabled: true,
+                enabled: false,
                 uniqueId: "editor01",
                 delay: 1000,
             },

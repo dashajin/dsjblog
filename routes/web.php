@@ -45,4 +45,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::post('category/store', 'CategoryController@store');
     Route::get('category/edit/{id}', 'CategoryController@edit');
     Route::get('category/delete/{id}', 'CategoryController@destroy');
+
+    Route::resource('image', 'ImageController');
 });

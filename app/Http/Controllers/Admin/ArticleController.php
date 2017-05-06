@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Article;
 use Illuminate\Support\Facades\DB;
+use Intervention\Image\Facades\Image;
 
 class ArticleController extends Controller
 {
@@ -19,12 +20,16 @@ class ArticleController extends Controller
     public function index()
     {
         $article = new Article;
-        $articles = $article->paginate(2);
+        $articles = $article->paginate(10);
         return view('admin.article.articles', compact('articles'))->withCategories(Category::all());
     }
 
     public function create()
     {
+//        $img = Image::canvas(800, 600, '#8eb4cb');
+//        $img->save(public_path('images/test1.jpg'));
+//        $path = public_path('images/test1.jpg');
+//        echo "<img src='/images/test1.jpg'>";
         return view('admin.article.create')->withCategories(Category::all());
     }
 

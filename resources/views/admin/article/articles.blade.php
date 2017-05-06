@@ -1,49 +1,67 @@
 @extends('admin.layouts.app')
-
 @section('content')
-    <div class="container">
-        <div class="row">
-            @include('admin.layouts.leftnav')
-            <div class="col-md-9">
-                @if (session('success'))
-                    <div class="alert alert-info">
-                        <ul>
-                            <li>{{ session('success') }}</li>
-                        </ul>
-                    </div>
-                @endif
-                @if (count($errors) > 0)
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach($errors->all() as $error)
-                                <li>{{ $error }}</li>
+    @include('admin.layouts.leftnav')
+    <div id="wrapper">
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="page-head-line">Articles <small>>>> Listing</small></h1>
+                    <h1 class="page-subhead-line">This is dummy text , you can replace it with your original text. </h1>
+                </div>
+            </div>
+            @if (session('success'))
+                <div class="alert alert-info">
+                    <ul>
+                        <li>{{ session('success') }}</li>
+                    </ul>
+                </div>
+            @endif
+            @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th class="col-md-1">ID</th>
+                                <th>title</th>
+                                <th>description</th>
+                                <th class="col-md-2">created_at</th>
+                                <th class="col-md-2">operation</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($articles as $article)
+                                <tr>
+                                    <td>{{ $article->id }}</td>
+                                    <td>{{ $article->title }}</td>
+                                    <td>{{ $article->description }}</td>
+                                    <td>{{ $article->created_at->toDateTimeString() }}</td>
+                                    <td>
+                                        <a class="btn btn-primary btn-sm" href="{{ url("admin/article/".$article->id."/edit") }}">
+                                            <i class="fa fa-edit"></i> Edit
+                                        </a>
+                                        <form action="{{ url('admin/article/'.$article->id) }}" method="POST" style="display: inline;">
+                                            {{ method_field('DELETE') }}
+                                            {{ csrf_field() }}
+                                            <button type="button" class="btn btn-danger btn-sm" onclick="form.submit();"><i class="fa fa-trash"></i> DELETE</button>
+                                        </form>
+                                    </td>
+                                </tr>
                             @endforeach
-                        </ul>
+                            </tbody>
+                        </table>
                     </div>
-                @endif
-                <div class="row page-title-row">
-                    <div class="col-md-9">
-                        <h2>Articles <small>» Listing</small></h2>
-                    </div>
-                    <div class="col-md-3">
-                        <a class="btn btn-success pull-right" href="{{ url('admin/article/create') }}"><i class="fa fa-plus-circle"></i> New Article</a>
-                    </div>
+                    <div class="text-center">{{ $articles->links() }}</div>
                 </div>
-                @foreach($articles as $article)
-                <div class="well well-lg">
-                    <h1>{{ $article->title }}</h1>
-                    <h4>{{ $article->description }}</h4>
-                    <h5 class="text-primary"><i class="fa fa-file"></i> 分类:{{ $article->category->name }}</h5>
-                    <div class="row">
-                    <button class="btn btn-link btn-xs"><i class="fa fa-eye"></i> 100</button>
-                    <button class="btn btn-link btn-xs"><i class="fa fa-thumbs-o-up"></i> 100</button>
-                    <button class="btn btn-info btn-xs"><i class="fa fa-tag"></i> lavarel</button>
-                    <button class="btn btn-info btn-xs"><i class="fa fa-tag"></i> php</button>
-                    <a class="btn btn-primary pull-right" href="{{ url("admin/article/".$article->id."/edit") }}">Read more >></a>
-                    </div>
-                </div>
-                @endforeach
-                <div class="text-center">{{ $articles->links() }}</div>
             </div>
         </div>
     </div>
