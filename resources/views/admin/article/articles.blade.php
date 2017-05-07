@@ -35,7 +35,8 @@
                                 <th class="col-md-1">ID</th>
                                 <th class="col-md-3">title</th>
                                 <th class="col-md-4">description</th>
-                                <th class="col-md-2">created_at</th>
+                                <th class="col-md-1">category</th>
+                                <th class="col-md-1">created_at</th>
                                 <th class="col-md-2">operation</th>
                             </tr>
                             </thead>
@@ -45,6 +46,7 @@
                                     <td>{{ $article->id }}</td>
                                     <td>{{ $article->title }}</td>
                                     <td>{{ $article->description }}</td>
+                                    <td>{{ $article->category->name }}</td>
                                     <td>{{ $article->created_at->toDateTimeString() }}</td>
                                     <td>
                                         <a class="btn btn-primary btn-sm" href="{{ url("admin/article/".$article->id."/edit") }}">

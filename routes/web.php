@@ -51,5 +51,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('tag/edit/{id}', 'TagController@edit');
     Route::get('tag/delete/{id}', 'TagController@destroy');
 
+    Route::get('comment', 'CommentController@index');
+    Route::get('comment/delete/{id}', 'CommentController@destroy');
+
     Route::resource('image', 'ImageController');
 });

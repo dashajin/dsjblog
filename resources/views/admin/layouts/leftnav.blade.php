@@ -28,7 +28,7 @@
                 <a href="{{ url('admin/category') }}"><i class="fa fa-list "></i>Categories</a>
             </li>
             <li>
-                <a href="{{ url('admin/tag') }}"><i class="fa fa-tags "></i>Tags</a>
+                <a href="{{ url('admin/comment') }}"><i class="fa fa-comments "></i>Comments</a>
             </li>
         </ul>
     </div>
