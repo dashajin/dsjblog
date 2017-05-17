@@ -30,6 +30,9 @@
             <li>
                 <a href="{{ url('admin/comment') }}"><i class="fa fa-comments "></i>Comments</a>
             </li>
+            <li>
+                <a href="{{ url('admin/tag') }}"><i class="fa fa-tags"></i>Tags</a>
+            </li>
         </ul>
     </div>
 </nav>

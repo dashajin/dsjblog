@@ -12,6 +12,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css')}}" rel="stylesheet">
+
+    <link href="/select2/dist/css/select2.css" rel="stylesheet">
     {{--<link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">--}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
     <!-- BOOTSTRAP STYLES-->

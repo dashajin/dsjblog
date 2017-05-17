@@ -29,7 +29,7 @@ class HomeController extends Controller
     {
         //dd(Auth::user());
         $article = new Article;
-        $articles = $article->getArticles(6);
+        $articles = $article->getArticles(8);
         //viewInit();
         return view('home', ['articles' => $articles]);
     }

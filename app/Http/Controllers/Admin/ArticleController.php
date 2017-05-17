@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use App\Http\Requests\ArticleRequest;
+use App\Tag;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Article;
@@ -30,19 +31,20 @@ class ArticleController extends Controller
 //        $img->save(public_path('images/test1.jpg'));
 //        $path = public_path('images/test1.jpg');
 //        echo "<img src='/images/test1.jpg'>";
-        return view('admin.article.create')->withCategories(Category::all());
+        $tags = Tag::all();
+        return view('admin.article.create', compact('tags'))->withCategories(Category::all());
     }
 
     public function store(ArticleRequest $request)
     {
         $article = new Article;
-        $article->title = $request['title'];
-        $article->description = $request['description'];
-        $article->content = $request['content'];
-        $article->cat_id = $request['cat_id'];
-//        $data = array_slice($request->all(), 1);
-        //dd($data);
-        if ($article->save()) {
+//        $article->title = $request['title'];
+//        $article->description = $request['description'];
+//        $article->content = $request['content'];
+//        $article->cat_id = $request['cat_id'];
+        $res = $article->create($request->all());
+        $res->tags()->attach($request->get('tag_id'));
+        if ($res) {
             return redirect('admin/article/create')->withSuccess('添加成功');
         } else {
             return redirect('admin/article/create')->withErrors('添加失败');
@@ -58,11 +60,11 @@ class ArticleController extends Controller
     public function update(ArticleRequest $request, $id)
     {
         $article = Article::find($id);
-        $article->title = $request['title'];
-        $article->description = $request['description'];
-        $article->content = $request['content'];
-        $article->cat_id = $request['cat_id'];
-        $res = $article->update();
+//        $article->title = $request['title'];
+//        $article->description = $request['description'];
+//        $article->content = $request['content'];
+//        $article->cat_id = $request['cat_id'];
+        $res = $article->update($request->all());
         if ($res)
         {
             return redirect('/admin/article')->withSuccess('文章更新成功');
@@ -71,7 +73,12 @@ class ArticleController extends Controller
 
     public function destroy($id)
     {
-        Article::find($id)->delete();
-        return redirect('/admin/article')->withSuccess('文章删除成功');
+        $article = Article::find($id);
+        $article->tags()->detach();
+        if ($article->delete()) {
+            return redirect('/admin/article')->withSuccess('删除成功');
+        } else {
+            return redirect('/admin/article')->withSuccess('删除失败');
+        }
     }
 }

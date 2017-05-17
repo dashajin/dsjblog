@@ -17,9 +17,11 @@ if (!function_exists('viewInit')) {
     {
         $article = app('App\Article');
         $category = app('App\Category');
+        $tag = app('App\Tag');
         $view = app('view');
 
         $view->share('newArticleList', $article::getNewArticles(5));
         $view->share('categories', $category::all());
+        $view->share('allTags', $tag::all());
     }
 }

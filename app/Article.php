@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\DB;
 class Article extends Model
 {
 
+    protected $fillable = [
+        'title', 'description', 'content', 'cat_id'
+    ];
+
     public function category()
     {
         return $this->belongsTo(Category::class, 'cat_id', 'id');
@@ -21,6 +25,11 @@ class Article extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class, 'article_id', 'id');
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
     }
 
 
@@ -46,6 +55,8 @@ class Article extends Model
     {
         if (!empty(request('cat_id'))) {
             $articles = self::where('cat_id', '=', request('cat_id'))->paginate($num);
+        } else if (!empty(request('tag_id'))) {
+            $articles = Tag::find(request('tag_id'))->articles()->paginate($num);
         } else if (!empty(request('id'))) {
             $articles = self::find(request('id'));
         } else if (!empty(request('search'))) {

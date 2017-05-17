@@ -15,17 +15,15 @@
                                     >
                                         <h2 class="post-title">{{ $article->title }}</h2>
                                     </a>
-                                        <h5 class="post-subtitle" style="color: darkgray; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: inherit">{{ $article->content }}</h5>
-
-                                    分类:<a href="{{ url("/article?cat_id=".$article->category->id) }}"> {{ $article->category->name }} </a>
-                                    <i class="fa fa-comments-o"></i> {{ $article->comments->count() }}
+                                        <h5 class="post-subtitle" style="color: darkgray; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: inherit">{{ $article->content }} </h5>
+                                    <i class="fa fa-calendar-o"></i> {{ $article->created_at->toDateTimeString() }}
+                                    | <i class="fa fa-folder-o"></i><a href="{{ url("/article?cat_id=".$article->category->id) }}"> {{ $article->category->name }} </a>
+                                    | <i class="fa fa-comments-o"></i> {{ $article->comments->count() }}
                                     <p class="post-meta">
-
-                                        <a href="#">dashajin</a> created at {{ $article->created_at->toDateTimeString() }}
                                         @if($article->tags)
-                                            @foreach( $article->tags as $key)
-                                                <a href="/article?key_id={{ $key->id }}">
-                                                    <span class="label {{ request('key_id') == $key->id?'label-success':'label-info' }}"  style="font-size: 66%"> <i class="glyphicon glyphicon-tag"></i>&nbsp; &nbsp;{{ $key->name }}</span>
+                                            @foreach( $article->tags as $tag)
+                                                <a href="/article?tag_id={{ $tag->id }}">
+                                                    <span class="label {{ request('tag_id') == $tag->id?'label-success':'label-info' }}"  style="font-size: 66%"> <i class="fa fa-tags"></i> {{ $tag->name }}</span>
                                                 </a>
                                                 {{--<a href="/blog?tag=rem">{{ $key->name }}</a>--}}
                                             @endforeach

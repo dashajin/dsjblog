@@ -5,8 +5,10 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="page-head-line">Articles <small>>>> Listing</small></h1>
-                    <a class="btn btn-success pull-right" href="{{ url('admin/article/create') }}"><i class="fa fa-plus-circle"></i> New Article</a>
+                    <h1 class="page-head-line">
+                        Articles <small>>>> Listing</small>
+                        <a class="btn btn-success pull-right" href="{{ url('admin/article/create') }}"><i class="fa fa-plus-circle"></i> New Article</a>
+                    </h1>
                     <h1 class="page-subhead-line text-center" style="font-size: 40px;">{{ config('app.admin.motto') }}</h1>
                 </div>
             </div>

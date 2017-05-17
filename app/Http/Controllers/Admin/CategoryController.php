@@ -41,6 +41,7 @@ class CategoryController extends Controller
         ]);
         $category = new Category;
         $category->name = $request['name'];
+        //dd($category->create(['name' => 'vue']));
         if ($category->save()) {
             return redirect('admin/category')->withSuccess('添加成功');
         } else {

@@ -37,10 +37,16 @@
                         <textarea class="form-control" rows="3" placeholder="文章描述" id="desc" name="description"></textarea>
                         <label for="content">Content:</label>
                         <textarea rows="10" id="editor" name="content"></textarea>
-                        <label for="name">category:</label>
+                        <label for="cat_id">Category:</label>
                         <select class="form-control" name="cat_id">
                             @foreach($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                        <label for="tag">Tag:</label>
+                        <select class="js-example-basic-multiple-limit form-control" multiple="multiple" name="tag_id[]">
+                            @foreach($tags as $tag)
+                                <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -58,6 +64,7 @@
 @endsection
 
 @section('js')
+    <script src="/select2/dist/js/select2.js"></script>
     <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
     <script type="text/javascript">
         // Most options demonstrate the non-default behavior
@@ -127,6 +134,13 @@
             tabSize: 4,
             //toolbar: flase,
             //toolbarTips: false,
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".js-example-basic-multiple-limit").select2({
+                maximumSelectionLength: 5
+            });
         });
     </script>
 @endsection
