@@ -15,6 +15,7 @@ class ArticleController extends Controller
 {
     public function __construct()
     {
+        viewInit();
         $this->middleware('auth.admin');
     }
 
@@ -65,6 +66,8 @@ class ArticleController extends Controller
 //        $article->content = $request['content'];
 //        $article->cat_id = $request['cat_id'];
         $res = $article->update($request->all());
+        $article->tags()->detach();
+        $article->tags()->attach($request->get('tag_id'));
         if ($res)
         {
             return redirect('/admin/article')->withSuccess('文章更新成功');

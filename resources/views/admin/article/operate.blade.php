@@ -45,6 +45,18 @@
                                         {{ $category->name }}</option>
                                 @endforeach
                             </select>
+                            <label for="tag">Tag:</label>
+                            <select class="js-example-basic-multiple-limit form-control" multiple="multiple" name="tag_id[]">
+                                @foreach($allTags as $tag)
+                                    <option value="{{ $tag->id }}"
+                                    @foreach($article->tags as $articleTag)
+                                        @if($articleTag->id == $tag->id)
+                                            selected="selected"
+                                        @endif
+                                    @endforeach
+                                        >{{ $tag->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-offset-5">
@@ -63,4 +75,12 @@
     {{--<script  type = "text/javascript" >--}}
     {{--document.getElementById("sel")[0].selected=true;--}}
     {{--</script >--}}
+    <script src="/select2/dist/js/select2.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".js-example-basic-multiple-limit").select2({
+                maximumSelectionLength: 5
+            });
+        });
+    </script>
     @endsection

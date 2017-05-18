@@ -41,16 +41,6 @@ class Article extends Model
         return $articles;
     }
 
-    public function getArticleByArticleID($articleID)
-    {
-        return self::find($articleID);
-    }
-
-    public function  getArticleByCatID($cat_id)
-    {
-
-    }
-
     public function getArticles($num=5)
     {
         if (!empty(request('cat_id'))) {
